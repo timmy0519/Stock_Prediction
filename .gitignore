@@ -1,0 +1,9 @@
+.ipynb_checkpoints/
+.vscode/
+models/
+data/
+old_notebook/
+raw/*
+preprocessed/*
+train/*
+__py*
