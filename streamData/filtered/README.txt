@@ -1,0 +1,1 @@
+All intermediate files for the preprocessing of GSPC data

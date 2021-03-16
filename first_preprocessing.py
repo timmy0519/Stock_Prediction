@@ -4,11 +4,12 @@ import matplotlib as plt
 import pathlib
 import fastai
 import numpy as np
+import pathlib 
 from sklearn.impute import SimpleImputer
 def preprocess(pathname, filename):
     pathname = pathname 
     filename = filename
-    data = pd.read_csv(pathname+filename)
+    data = pd.read_csv(pathlib.Path(pathname,filename))
     data.columns = data.columns.str.split().str.join('_')
     data.columns = data.columns.str.replace('&','')
     data.drop('free_cash_flow',axis=1,inplace=True)

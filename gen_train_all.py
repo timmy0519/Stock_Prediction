@@ -1,19 +1,19 @@
 
 from  first_preprocessing import preprocess
 from gen_train import  gen_train
+import  extractGSPC_all
 import pathlib
 import glob
 import re
 def gen_all():
-    raw_dir = pathlib.Path('./raw')
+    raw_dir = pathlib.Path('htmlData/raw/')
     raw_csv_path = raw_dir.joinpath('*.csv')
-    prep_dir = pathlib.Path('./preprocessed')
+    prep_dir = pathlib.Path('htmlData/preprocessed/')
 
     all_files = glob.glob(raw_csv_path.as_posix())
-
     for f in all_files:
-        preprocess('raw/',pathlib.Path(f).name)
-
+        preprocess(str(raw_dir),pathlib.Path(f).name)
+    extractGSPC_all.extract_all()
     year_month_dict = {}
     for f in all_files:
         y_m = re.search("([0-9]{4})\-([0-9]{2})(?=\.csv)", f)

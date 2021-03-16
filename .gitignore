@@ -1,9 +1,9 @@
 .ipynb_checkpoints/
 .vscode/
-models/
-data/
-old_notebook/
-raw/*
-preprocessed/*
-train/*
+*.ipynb
+htmlData/**/*.csv
+streamData/**/*.*sv
+streamData/*.ipynb
+predictions/*.csv
+train/*.csv
 __py*
