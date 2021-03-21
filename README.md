@@ -36,6 +36,6 @@ Raw data should be placed to the corresponding "raw" folder and the folder struc
 
 ### Command to execute
 ```bash
-python gen_train_all.py # produce ready to train data from **/raw to train/
+python gen_test_all.py # produce ready to train data from **/raw to train/
 python xgbPredict.py # produce preds.csv in predictions/
 ```
