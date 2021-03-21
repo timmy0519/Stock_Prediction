@@ -3,7 +3,6 @@
 import pandas as pd
 import matplotlib as plt
 import pathlib
-import fastai
 import pathlib
 import argparse
 
