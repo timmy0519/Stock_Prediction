@@ -2,7 +2,6 @@ import argparse
 import pandas as pd
 import matplotlib as plt
 import pathlib
-import fastai
 import numpy as np
 import pathlib 
 from sklearn.impute import SimpleImputer
