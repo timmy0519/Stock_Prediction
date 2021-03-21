@@ -87,7 +87,7 @@ def preprocess(pathname, filename):
 
     transformComma(data,features)
     
-    data['sp_average_change']  = data['sp_52_week_change'] ** (1/12)
+    #data['sp_average_change']  = data['sp_52_week_change'] ** (1/12)
     # data.drop(columns=['sp_52_week_change'])
 
     data[float_feature] = data[float_feature].astype('float64')

@@ -29,7 +29,7 @@ def gen_train(x,y,targetBool=False):
     gspc_change_percentage = (n_gspc_data.iloc[0]['PRICE'] - gspc_data.iloc[0]['PRICE']) / gspc_data.iloc[0]['PRICE'] * 100
 
     # merged_data = pd.merge(left=data,right=n_data.loc[:,['Stock_code','current price']],how='left',left_on='Stock_code',right_on='Stock_code')
-    merged_data = pd.merge(left=data,right=n_data.loc[:,['Stock_code','current_price','sp_average_change']],how='left',left_on='Stock_code',right_on='Stock_code')
+    merged_data = pd.merge(left=data,right=n_data.loc[:,['Stock_code','current_price']],how='left',left_on='Stock_code',right_on='Stock_code')
 ## predict actual price change
     # target_var = 'price_change'
     # merged_data[target_var] = merged_data['current price_y'] - merged_data['current price_x']
