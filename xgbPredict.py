@@ -27,6 +27,7 @@ def xgbPredict():
 
         filename = pathlib.Path(file_path).name
         df = pd.read_csv(file_path)
+        df = df[df.current_price > df.current_price.quantile(.25)]
         # With all features
         numerical_cols = df.select_dtypes('number').columns
         id_feature = ['Stock_code']
@@ -41,7 +42,7 @@ def xgbPredict():
 
         y_test_hat = model.predict(X_test)
 
-        k=10
+        k=20
 
         topK = df.iloc[y_test_hat.argsort()[-k:]]
         # print("The mean of top {} predicted profit against GSPC is {:.2f}%".format(k,topK.trend_sp.mean()) )
