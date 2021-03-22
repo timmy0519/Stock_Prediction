@@ -13,16 +13,16 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import numpy as np
 from pickle import dump,load
-
-def xgbPredict():
-    dir_path = pathlib.Path('htmlData/preprocessed/')
+import argparse
+def xgbPredict(folder):
+    dir_path = pathlib.Path(folder+'/htmlData/preprocessed/')
     csv_path = dir_path.joinpath('*.csv')
 
 
     all_files = glob.glob(csv_path.as_posix())
     
     model = XGBRegressor()
-    model.load_model('model/xgboost_0311.json')
+    model.load_model(folder+'/model/xgboost_0311.json')
     def predictSingleCSV(file_path,model):
 
         filename = pathlib.Path(file_path).name
@@ -36,7 +36,7 @@ def xgbPredict():
 
         X = df.drop(id_feature,axis=1)
 
-        preprocessor = load(open('model/preprocessor.pkl', 'rb'))
+        preprocessor = load(open(folder+'/model/preprocessor.pkl', 'rb'))
         X_test = preprocessor.transform(X)
 
 
@@ -46,7 +46,7 @@ def xgbPredict():
 
         topK = df.iloc[y_test_hat.argsort()[-k:]]
         # print("The mean of top {} predicted profit against GSPC is {:.2f}%".format(k,topK.trend_sp.mean()) )
-        topK.Stock_code.to_csv('predictions/pred_%s.csv'%filename.split('.')[0],index=False,header=False)
+        topK.Stock_code.to_csv(folder+'/predictions/pred_%s.csv'%filename.split('.')[0],index=False,header=False)
 
     for f in all_files:
         predictSingleCSV(f,model)
@@ -55,4 +55,10 @@ def xgbPredict():
     
 
 if __name__ == '__main__':
-    xgbPredict()
+    PARSER = argparse.ArgumentParser()
+    PARSER.add_argument("--folder",
+                        type=str,
+                        help="train data")
+
+    ARGS = PARSER.parse_args()
+    xgbPredict(ARGS.folder)

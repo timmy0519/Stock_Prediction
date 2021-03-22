@@ -6,4 +6,5 @@ streamData/**/*.*sv
 streamData/*.ipynb
 predictions/*.csv
 train/*.csv
+OldNotebooks/*
 __py*
