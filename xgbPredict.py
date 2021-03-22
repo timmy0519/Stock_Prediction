@@ -42,7 +42,7 @@ def xgbPredict():
 
         y_test_hat = model.predict(X_test)
 
-        k=30
+        k=10
 
         topK = df.iloc[y_test_hat.argsort()[-k:]]
         # print("The mean of top {} predicted profit against GSPC is {:.2f}%".format(k,topK.trend_sp.mean()) )
